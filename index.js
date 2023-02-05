@@ -9,6 +9,8 @@ import { getUsers } from "./controllers/getUsers.js";
 const app = express();
 dotenv.config();
 
+const PORT = process.env.PORT || 8100;
+
 const mongoConnect = async () => {
   mongoose.set("strictQuery", true);
   try {
@@ -31,7 +33,7 @@ app.use("/api/users", getUsers);
 // });
 
 mongoConnect().then(() => {
-  app.listen(8100, () => {
+  app.listen(PORT, () => {
     console.log("Connection to backend has been completed successfully!!");
   });
 });
