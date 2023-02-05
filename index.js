@@ -25,7 +25,13 @@ app.use(express.json());
 app.use("/api/auth", userCreator);
 app.use("/api/users", getUsers);
 
-app.listen(8100, () => {
-  mongoConnect();
-  console.log("Connection to backend has been completed successfully!!");
+// app.listen(8100, () => {
+//   mongoConnect();
+//   console.log("Connection to backend has been completed successfully!!");
+// });
+
+mongoConnect().then(() => {
+  app.listen(8100, () => {
+    console.log("Connection to backend has been completed successfully!!");
+  });
 });
